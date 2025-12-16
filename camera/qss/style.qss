@@ -1,0 +1,103 @@
+/* style.qss - 清新淡雅版 (交互增强) */
+
+/* 1. 主窗口背景 */
+QWidget#Widget {
+    background: #F7F9FB;
+}
+
+/* 2. 通用标签文字 */
+QLabel {
+    font-family: "Microsoft YaHei", "Ubuntu";
+    color: #546E7A;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 3. 数据显示卡片 */
+QLabel[objectName$="value"] {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: "Arial";
+    font-size: 32px;
+    color: #455A64;
+    border: 2px solid #E1F5FE;
+    qproperty-alignment: AlignCenter;
+}
+
+/* --- 状态颜色 --- */
+QLabel[type="hot"], QLabel[type="warn"] {
+    color: #FF7043;
+    border: 3px solid #FFCCBC;
+    background-color: #FBE9E7;
+}
+QLabel[type="wet"], QLabel[type="safe"] {
+    color: #29B6F6;
+    border: 3px solid #B3E5FC;
+    background-color: #E1F5FE;
+}
+
+/* 4. 按钮基础样式 */
+QPushButton {
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #4FC3F7, stop:1 #29B6F6);
+    border: none;
+    min-height: 55px;
+}
+QPushButton:pressed {
+    background-color: #0288D1;
+    padding-top: 5px;
+}
+QPushButton:checked {
+    border: 4px solid #B2DFDB;
+}
+
+/* =================================================================
+   [核心修改] 动态颜色规则：根据按钮文字自动变色
+   ================================================================= */
+
+/* 绿色系 (启动/正向/安全) - 添加了 "开电机" */
+QPushButton[text="开灯"],
+QPushButton[text="开电机"],
+QPushButton[text="正转"],
+QPushButton[text="加速"],
+QPushButton[text="打开串口"] {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #66BB6A, stop:1 #43A047);
+}
+
+/* 红色系 (关闭/反向/停止) - 添加了 "关电机" */
+QPushButton[text="关灯"],
+QPushButton[text="关电机"],
+QPushButton[text="反转"],
+QPushButton[text="减速"],
+QPushButton[text="关闭串口"] {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #EF5350, stop:1 #E53935);
+}
+
+/* 拍照按钮 - 橙色 */
+QPushButton#pushButton_paizhao {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #FFA726, stop:1 #FB8C00);
+}
+
+/* 5. 滑动条 */
+QSlider::groove:horizontal {
+    border: 1px solid #CFD8DC;
+    height: 30px;
+    background: #ECEFF1;
+    border-radius: 15px;
+}
+QSlider::handle:horizontal {
+    background: #FFFFFF;
+    border: 4px solid #29B6F6;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    margin: -8px 0;
+}
+QSlider::handle:horizontal:pressed {
+    background: #E1F5FE;
+}
